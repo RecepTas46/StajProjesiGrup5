@@ -1,1 +1,0 @@
-aycan demirel
