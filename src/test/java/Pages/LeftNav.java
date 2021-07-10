@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LeftNav extends Parent{
+public class LeftNav extends Parent {
 
     public LeftNav() {
         PageFactory.initElements(BaseDriver.getDriver(), this);
@@ -46,18 +46,22 @@ public class LeftNav extends Parent{
 
     @FindBy(xpath = "(//span[text()='Entrance Exams'])[2]")
     private WebElement entranceExamsTwo;
-
     @FindBy(xpath = "//span[text()='Human Resources']")
     private WebElement humanResources;
 
     @FindBy(xpath = "//span[text()='Employees']")
-    private WebElement employees ;
+    private WebElement Employees;
 
-
+    @FindBy(xpath = "//span[text()='Education']")
+    private WebElement EducationBtn;
+    @FindBy(xpath = "(//span[text()='Setup'])[5]")
+    private WebElement setupfive;
+    @FindBy(xpath = "//span[text()='Subject Categories']")
+    private WebElement subjectCategoriesBtn;
 
     WebElement myElement;
-    public void findAndClick(String elementName)
-    {
+
+    public void findAndClick(String elementName) {
         switch (elementName) {
             case "setupOne":
                 myElement = setupOne;
@@ -94,11 +98,9 @@ public class LeftNav extends Parent{
             case "fees":
                 myElement = fees;
                 break;
-
             case "entranceExamsOne":
                 myElement = entranceExamsOne;
                 break;
-
             case "setupTree":
                 myElement = setupTree;
                 break;
@@ -106,14 +108,22 @@ public class LeftNav extends Parent{
             case "entranceExamsTwo":
                 myElement = entranceExamsTwo;
                 break;
-
             case "humanResources":
                 myElement = humanResources;
                 break;
-
-            case "employees":
-                myElement = employees;
+            case "Employees":
+                myElement = Employees;
                 break;
+            case "EducationBtn":
+                myElement = EducationBtn;
+                break;
+            case "setupfive":
+                myElement = setupfive;
+                break;
+            case "subjectCategoriesBtn":
+                myElement = subjectCategoriesBtn;
+                break;
+
         }
 
         clickFunction(myElement);

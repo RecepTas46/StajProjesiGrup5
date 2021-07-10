@@ -10,25 +10,28 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
-public class DialogContent extends Parent{
-
+public class DialogContent extends Parent {
     public DialogContent() {
         PageFactory.initElements(BaseDriver.getDriver(), this);
     }
 
-    @FindBy(id="mat-input-0")
+    @FindBy(id = "mat-input-0")
     private WebElement username;
 
-    @FindBy(id="mat-input-1")
+    @FindBy(id = "mat-input-1")
     private WebElement password;
 
-    @FindBy(css="button[aria-label='LOGIN']")
+    @FindBy(css = "button[aria-label='LOGIN']")
     private WebElement loginButton;
+
+    @FindBy(xpath = "//button[text()='Accept all cookies']")
+    private WebElement acceptCookies;
 
     @FindBy(xpath = "(//span[contains(text(),'Dashboard')])[2]")
     public WebElement dashboard;
 
     @FindBy(xpath = "//ms-add-button[contains(@tooltip,'TITLE.ADD')]//button")
+//stalElement hatasi ayni lokator den onceki sayfa da bir adet daha bulmasi..
     private WebElement addButton;
 
     @FindBy(xpath = "//ms-text-field[@formcontrolname='name']//input")
@@ -84,68 +87,68 @@ public class DialogContent extends Parent{
 
     @FindBy(xpath = "//ms-text-field[@formcontrolname='budgetAccountIntegrationCode']/input")
     private WebElement integrationCode;
-
-    @FindBy(xpath = "(//button[@class='consent-give'])[1]")
-    private WebElement acceptCookies;
-
     @FindBy(xpath = "//ms-edit-button//button")
     private WebElement editBtn;
 
     WebElement myElement;
-    public void findAndSend(String elementName,String value)
-    {
-          switch (elementName) {
-              case "username":
-                 myElement = username;
-                 break;
 
-              case "password":
-                  myElement = password;
-                  break;
+    public void findAndSend(String elementName, String value) {//text ise yani veri gonderecek isek buraya ekliyoruz
+//        if (elementName=="username")
+//            myElement=username;
 
-              case "nameInput":
-                  myElement = nameInput;
-                  break;
+        switch (elementName) {
 
-              case "codeInput":
-                  myElement = codeInput;
-                  break;
+            case "username":
+                myElement = username;
+                break;
+            case "password":
+                myElement = password;
+                break;
+            case "nameInput":
+                myElement = nameInput;
+                break;
 
-              case "shortName":
-                  myElement = shortName;
-                  break;
+            case "codeInput":
+                myElement = codeInput;
+                break;
+            case "shortName":
+                myElement = shortName;
+                break;
 
-              case "searchInput":
-                  myElement = searchInput;
-                  break;
+            case "searchInput":
+                myElement = searchInput;
+                break;
 
-              case "priorityCode":
-                  myElement = priorityCode;
-                  break;
+            case "priorityInput":
+                myElement = priorityInput;
+                break;
 
-              case "integrationCode":
-                  myElement = integrationCode;
-                  break;
-          }
+            case "priorityCode":
+                myElement = priorityCode;
+                break;
 
-          sendKeysFunction(myElement, value);
+            case "integrationCode":
+                myElement = integrationCode;
+                break;
+        }
+
+        sendKeysFunction(myElement, value);
     }
 
-    public void findAndClick(String elementName)
-    {
+    public void findAndClick(String elementName) {
         switch (elementName) {
             case "loginButton":
                 myElement = loginButton;
                 break;
-
             case "addButton":
                 myElement = addButton;
                 break;
-
+            case "acceptCookies":
+                myElement = acceptCookies;
+                break;
             case "saveButton":
                 myElement = saveButton;
                 break;
-
             case "closeDialog":
                 myElement = closeDialog;
                 break;
@@ -161,26 +164,20 @@ public class DialogContent extends Parent{
             case "deleteDialogBtn":
                 myElement = deleteDialogBtn;
                 break;
-
             case "rightScroll":
                 myElement = rightScroll;
                 break;
-
-            case "acceptCookies":
-                myElement= acceptCookies;
-                break;
-
             case "editBtn":
-                myElement= editBtn;
+                myElement = editBtn;
                 break;
+
 
         }
 
         clickFunction(myElement);
     }
 
-    public void findAndContainsText(String elementName, String msg)
-    {
+    public void findAndContainsText(String elementName, String msg) {
         switch (elementName) {
             case "successMessage":
                 myElement = successMessage;
@@ -189,7 +186,6 @@ public class DialogContent extends Parent{
             case "errorMessage":
                 myElement = errorMessage;
                 break;
-
             case "alreadyExist":
                 myElement = alreadyExist;
                 break;
@@ -198,9 +194,7 @@ public class DialogContent extends Parent{
         verifyContainsText(myElement, msg);
     }
 
-
-    public void findAndDelete(String deleteString)
-    {
+    public void findAndDelete(String deleteString) {
         // tıklatma
         scrollToUpElement(rightScroll);
         findAndSend("searchInput", deleteString);
@@ -213,8 +207,11 @@ public class DialogContent extends Parent{
         findAndClick("deleteDialogBtn");
     }
 
+
+
     List<WebElement> myList;
-    public void ChooseListElement(String listName, String option)
+
+    public void ChooseListElement(String listName, String option)//choose-->secim
     {
         switch (listName) {
             case "userTypeAllOptions":
@@ -225,9 +222,7 @@ public class DialogContent extends Parent{
         userType.click();
         listSelectOption(myList, option);
     }
-
-    public void findAndEdit(String oldWord, String newWord)
-    {
+    public void findAndEdit(String oldWord,String newWord) {
         // tıklatma
         scrollToUpElement(rightScroll);
         findAndSend("searchInput", oldWord);
@@ -237,9 +232,7 @@ public class DialogContent extends Parent{
         waitnumberOfElementsToBeLessThan(By.xpath("//ms-delete-button//button"), 5);
 
         findAndClick("editBtn");
-
-        findAndSend("nameInput", newWord);
+        findAndSend("nameInput",newWord);
         findAndClick("saveButton");
     }
-
 }
