@@ -90,6 +90,20 @@ public class DialogContent extends Parent {
     @FindBy(xpath = "//ms-edit-button//button")
     private WebElement editBtn;
 
+    @FindBy(css = "div>mat-option>span")
+    private List<WebElement> countryAllOptions;
+
+    @FindBy(xpath = "//mat-select[contains(@aria-labelledby,'mat-form-field')]")
+    private WebElement countrySelect;
+
+    @FindBy(xpath = "//ms-text-field[@formcontrolname='name']//input")
+    private WebElement cityName;
+
+    @FindBy(xpath = "//div[contains(text(),'deleted')]")
+    private WebElement cannotDeletedMsg;
+
+
+
     WebElement myElement;
 
     public void findAndSend(String elementName, String value) {//text ise yani veri gonderecek isek buraya ekliyoruz
@@ -126,11 +140,6 @@ public class DialogContent extends Parent {
             case "priorityCode":
                 myElement = priorityCode;
                 break;
-
-            case "integrationCode":
-                myElement = integrationCode;
-                break;
-        }
 
         sendKeysFunction(myElement, value);
     }
@@ -171,7 +180,6 @@ public class DialogContent extends Parent {
                 myElement = editBtn;
                 break;
 
-
         }
 
         clickFunction(myElement);
@@ -189,6 +197,12 @@ public class DialogContent extends Parent {
             case "alreadyExist":
                 myElement = alreadyExist;
                 break;
+
+            case "cannotDeletedMsg":
+                myElement = cannotDeletedMsg;
+                break;
+
+
         }
 
         verifyContainsText(myElement, msg);
@@ -217,9 +231,15 @@ public class DialogContent extends Parent {
             case "userTypeAllOptions":
                 myList = userTypeAllOptions;
                 break;
+
+            case "countryAllOptions":
+                myList = countryAllOptions;
+                break;
+
+
         }
 
-        userType.click();
+       // userType.click();
         listSelectOption(myList, option);
     }
     public void findAndEdit(String oldWord,String newWord) {
@@ -235,4 +255,5 @@ public class DialogContent extends Parent {
         findAndSend("nameInput",newWord);
         findAndClick("saveButton");
     }
+
 }

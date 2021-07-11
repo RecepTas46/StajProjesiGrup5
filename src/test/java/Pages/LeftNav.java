@@ -50,7 +50,7 @@ public class LeftNav extends Parent {
     private WebElement humanResources;
 
     @FindBy(xpath = "//span[text()='Employees']")
-    private WebElement Employees;
+
 
     @FindBy(xpath = "//span[text()='Education']")
     private WebElement EducationBtn;
@@ -120,12 +120,23 @@ public class LeftNav extends Parent {
             case "setupfive":
                 myElement = setupfive;
                 break;
-            case "subjectCategoriesBtn":
-                myElement = subjectCategoriesBtn;
-                break;
 
         }
 
         clickFunction(myElement);
     }
+
+    public  void SliderAction(String elementName, int number1,int number2) {
+
+        switch (elementName) {
+
+            case "surgu":myElement = surgu;break;
+
+        }
+        moveSliderAction(myElement,number1,number2);
+    }
+
+
+
+
 }
