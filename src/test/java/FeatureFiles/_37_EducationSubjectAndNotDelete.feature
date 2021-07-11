@@ -7,9 +7,17 @@ Feature: Education Create and Delete
     And Navigate to education page
 
   Scenario: Create a Education
-    When Create a education name as "grup5" code as "code15"
+    When Create a education name as "MySubjectCat" code as "cod5"
     Then Success message should be displayed
 
-  Scenario: Delete a Education
-    When User delete the "grup5"
+  Scenario: Create a Subject Education
+    When Create a subject new Education name as "syuleyman" code as "code005"
     Then Success message should be displayed
+
+
+  Scenario: Delete a Education
+    When User delete the "MySubjectCat"
+    Then Can not be deleted message should be displayed
+
+
+

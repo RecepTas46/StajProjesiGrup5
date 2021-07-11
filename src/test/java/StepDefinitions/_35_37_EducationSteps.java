@@ -56,8 +56,6 @@ public class _35_37_EducationSteps {
     }
 
 
-    @And("^Select 'MySubjectCat'$")
-    public void selectMySubjectCat() {
 
-    }
+
 }
