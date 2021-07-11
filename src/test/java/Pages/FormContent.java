@@ -6,11 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.awt.*;
-import java.awt.event.KeyEvent;
-
-public class FormContent  extends Parent{
-
+public class FormContent extends Parent {
     public FormContent() {
         PageFactory.initElements(BaseDriver.getDriver(), this);
     }
@@ -69,13 +65,13 @@ public class FormContent  extends Parent{
     @FindBy(xpath = "(//div[contains(@class,'mat-select-value ng-tns-c')])[2]")
     private WebElement employeeType;
 
-    @FindBy(xpath = "(//mat-pseudo-checkbox[contains(@class, 'mat-pseudo-checkbox')])[2]")
+    @FindBy(xpath = "(//span[@class='mat-option-text'])[1]")
     private WebElement employeeTeacher;
 
-    @FindBy(css = "[formcontrolname='employeeId']")
+    @FindBy(xpath = "//input[@formcontrolname='employeeId'][@data-placeholder='Employee ID']")
     private WebElement employeeId;
 
-    @FindBy(xpath = "//mat-select[@formcontrolname='type']")
+    @FindBy(xpath = "(//mat-select[@formcontrolname='type']//div)[2]")
     private WebElement documentType;
 
     @FindBy(xpath = "//span[contains(text(),'Passport')]")
@@ -84,14 +80,10 @@ public class FormContent  extends Parent{
     @FindBy(xpath = "(//mat-form-field//input)[9]")
     private WebElement documentNumber;
 
-    @FindBy(css = "mat-select[formcontrolname='status']")
-    private WebElement passiveButton;
-
-
 
     WebElement myElement;
-    public void findAndClick(String elementName)
-    {
+
+    public void findAndClick(String elementName) {
         switch (elementName) {
             case "academicPeriod":
                 myElement = academicPeriod;
@@ -161,24 +153,18 @@ public class FormContent  extends Parent{
                 myElement = passport;
                 break;
 
-            case "passiveButton":
-                myElement = passiveButton;
-                break;
-
 
         }
 
         clickFunction(myElement);
 
-
-        if ( myElement == employeeTeacher) {
-              ESCClick();
+        if (myElement == employeeTeacher) {
+            ESCClick();
         }
 
     }
 
-    public void findAndSend(String elementName,String value)
-    {
+    public void findAndSend(String elementName, String value) {
         switch (elementName) {
             case "formSearchInput":
                 myElement = formSearchInput;
@@ -204,19 +190,16 @@ public class FormContent  extends Parent{
         sendKeysFunction(myElement, value);
     }
 
-    public void findAndDelete(String deleteString)
-    {
+    public void findAndDelete(String deleteString) {
         // tıklatma
         scrollToUpElement(rightScroll);
         findAndSend("formSearchInput", deleteString);
         findAndClick("searchButton");
 
-//        // çöp kovaları 5 den az olana kadar bekle: search sonucu gözükene kadar bekle
-        waitnumberOfElementsToBeLessThan(By.xpath("//ms-delete-button//button"), 8);
-//
+        // çöp kovaları 5 den az olana kadar bekle: search sonucu gözükene kadar bekle
+        waitnumberOfElementsToBeLessThan(By.xpath("//ms-delete-button//button"), 5);
+
         findAndClick("deleteButton");
         findAndClick("deleteDialogBtn");
     }
-
-
 }
