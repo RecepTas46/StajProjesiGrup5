@@ -53,6 +53,11 @@ public class LeftNav extends Parent{
     @FindBy(xpath = "//span[text()='Employees']")
     private WebElement employees ;
 
+    @FindBy(xpath = "(//span[text()='Cities'])[1]")
+    private WebElement cities ;
+
+    @FindBy(xpath = "(//div[@class='ps__thumb-y'])[1]")
+    private WebElement surgu ;
 
 
     WebElement myElement;
@@ -114,8 +119,28 @@ public class LeftNav extends Parent{
             case "employees":
                 myElement = employees;
                 break;
+
+            case "cities":
+                myElement = cities;
+                break;
+
+
         }
 
         clickFunction(myElement);
     }
+
+    public  void SliderAction(String elementName, int number1,int number2) {
+
+        switch (elementName) {
+
+            case "surgu":myElement = surgu;break;
+
+        }
+        moveSliderAction(myElement,number1,number2);
+    }
+
+
+
+
 }

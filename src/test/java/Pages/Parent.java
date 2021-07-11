@@ -101,7 +101,14 @@ public class Parent {
 //        action.perform();
 
     }
-
-
+    public static void waitUntilInvisibility(WebElement element){
+        WebDriverWait wait =new WebDriverWait(BaseDriver.getDriver(),10);
+        wait.until(ExpectedConditions.invisibilityOf(element));
+    }
+    public void moveSliderAction(WebElement surgu, int number1, int number2)
+    {
+        Actions aksiyonlar=new Actions(BaseDriver.getDriver());
+        Action aksiyon=aksiyonlar.moveToElement(surgu).dragAndDropBy(surgu,number1,number2).build();aksiyon.perform();
+    }
 
 }
