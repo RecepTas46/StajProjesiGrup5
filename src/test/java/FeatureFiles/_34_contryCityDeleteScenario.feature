@@ -16,6 +16,12 @@ Feature: City delete Scenario
     When Delete the "Uranus"
     Then Can not be deleted message should be displayed
 
+    When Delete the city "Urcapital" for "Uranus"
+    Then Success message should be displayed
+
+    When Delete the "Uranus"
+    Then Success message should be displayed
+
 
 
 

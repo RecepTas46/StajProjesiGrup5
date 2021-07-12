@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LeftNav extends Parent {
+public class LeftNav extends Parent{
 
     public LeftNav() {
         PageFactory.initElements(BaseDriver.getDriver(), this);
@@ -46,22 +46,23 @@ public class LeftNav extends Parent {
 
     @FindBy(xpath = "(//span[text()='Entrance Exams'])[2]")
     private WebElement entranceExamsTwo;
+
     @FindBy(xpath = "//span[text()='Human Resources']")
     private WebElement humanResources;
 
     @FindBy(xpath = "//span[text()='Employees']")
+    private WebElement employees ;
 
+    @FindBy(xpath = "(//span[text()='Cities'])[1]")
+    private WebElement cities ;
 
-    @FindBy(xpath = "//span[text()='Education']")
-    private WebElement EducationBtn;
-    @FindBy(xpath = "(//span[text()='Setup'])[5]")
-    private WebElement setupfive;
-    @FindBy(xpath = "//span[text()='Subject Categories']")
-    private WebElement subjectCategoriesBtn;
+    @FindBy(xpath = "(//div[@class='ps__thumb-y'])[1]")
+    private WebElement surgu ;
+
 
     WebElement myElement;
-
-    public void findAndClick(String elementName) {
+    public void findAndClick(String elementName)
+    {
         switch (elementName) {
             case "setupOne":
                 myElement = setupOne;
@@ -98,9 +99,11 @@ public class LeftNav extends Parent {
             case "fees":
                 myElement = fees;
                 break;
+
             case "entranceExamsOne":
                 myElement = entranceExamsOne;
                 break;
+
             case "setupTree":
                 myElement = setupTree;
                 break;
@@ -108,18 +111,19 @@ public class LeftNav extends Parent {
             case "entranceExamsTwo":
                 myElement = entranceExamsTwo;
                 break;
+
             case "humanResources":
                 myElement = humanResources;
                 break;
-            case "Employees":
-                myElement = Employees;
+
+            case "employees":
+                myElement = employees;
                 break;
-            case "EducationBtn":
-                myElement = EducationBtn;
+
+            case "cities":
+                myElement = cities;
                 break;
-            case "setupfive":
-                myElement = setupfive;
-                break;
+
 
         }
 
