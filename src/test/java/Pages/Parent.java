@@ -33,7 +33,7 @@ public class Parent {
     }
 
     public static void waitUntilVisible(WebElement element){
-        WebDriverWait wait=new WebDriverWait(BaseDriver.getDriver(),10);
+        WebDriverWait wait=new WebDriverWait(BaseDriver.getDriver(),15);
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 

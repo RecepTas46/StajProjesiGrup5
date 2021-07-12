@@ -27,10 +27,6 @@ public class _01_LoginSteps {
 
     @When("^Enter username and password and click login button$")
     public void enter_username_and_password_and_click_login_button()  {
-        // login işlemleri
-//        dc.username.sendKeys("richfield.edu");
-//        dc.password.sendKeys("Richfield2020!");
-//        dc.loginButton.click();
 
         dc.findAndSend("username", "richfield.edu");
         dc.findAndSend("password", "Richfield2020!");
