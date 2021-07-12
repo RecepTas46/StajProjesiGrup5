@@ -10,19 +10,19 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
-public class DialogContent extends Parent{
+public class DialogContent extends Parent {
 
     public DialogContent() {
         PageFactory.initElements(BaseDriver.getDriver(), this);
     }
 
-    @FindBy(id="mat-input-0")
+    @FindBy(id = "mat-input-0")
     private WebElement username;
 
-    @FindBy(id="mat-input-1")
+    @FindBy(id = "mat-input-1")
     private WebElement password;
 
-    @FindBy(css="button[aria-label='LOGIN']")
+    @FindBy(css = "button[aria-label='LOGIN']")
     private WebElement loginButton;
 
     @FindBy(xpath = "(//span[contains(text(),'Dashboard')])[2]")
@@ -91,48 +91,43 @@ public class DialogContent extends Parent{
     @FindBy(xpath = "//ms-edit-button//button")
     private WebElement editBtn;
 
+  
     WebElement myElement;
-    public void findAndSend(String elementName,String value)
-    {
-          switch (elementName) {
-              case "username":
-                 myElement = username;
-                 break;
 
-              case "password":
-                  myElement = password;
-                  break;
+    public void findAndSend(String elementName, String value) {
+        switch (elementName) {
+            case "username":
+                myElement = username;
+                break;
 
-              case "nameInput":
-                  myElement = nameInput;
-                  break;
+            case "password":
+                myElement = password;
+                break;
 
-              case "codeInput":
-                  myElement = codeInput;
-                  break;
+            case "nameInput":
+                myElement = nameInput;
+                break;
 
-              case "shortName":
-                  myElement = shortName;
-                  break;
+            case "codeInput":
+                myElement = codeInput;
+                break;
 
-              case "searchInput":
-                  myElement = searchInput;
-                  break;
+            case "shortName":
+                myElement = shortName;
+                break;
 
-              case "priorityCode":
-                  myElement = priorityCode;
-                  break;
+            case "searchInput":
+                myElement = searchInput;
+                break;
 
-              case "integrationCode":
-                  myElement = integrationCode;
-                  break;
-          }
 
-          sendKeysFunction(myElement, value);
+
+        }
+
+        sendKeysFunction(myElement, value);
     }
 
-    public void findAndClick(String elementName)
-    {
+    public void findAndClick(String elementName) {
         switch (elementName) {
             case "loginButton":
                 myElement = loginButton;
@@ -167,20 +162,20 @@ public class DialogContent extends Parent{
                 break;
 
             case "acceptCookies":
-                myElement= acceptCookies;
+                myElement = acceptCookies;
                 break;
 
             case "editBtn":
-                myElement= editBtn;
+                myElement = editBtn;
                 break;
+
 
         }
 
         clickFunction(myElement);
     }
 
-    public void findAndContainsText(String elementName, String msg)
-    {
+    public void findAndContainsText(String elementName, String msg) {
         switch (elementName) {
             case "successMessage":
                 myElement = successMessage;
@@ -199,8 +194,7 @@ public class DialogContent extends Parent{
     }
 
 
-    public void findAndDelete(String deleteString)
-    {
+    public void findAndDelete(String deleteString) {
         // tıklatma
         scrollToUpElement(rightScroll);
         findAndSend("searchInput", deleteString);
@@ -211,23 +205,34 @@ public class DialogContent extends Parent{
 
         findAndClick("deleteButton");
         findAndClick("deleteDialogBtn");
+
+    } public void findAndDeleteSubject(String deleteString) {
+        // tıklatma
+        scrollToUpElement(rightScroll);
+        findAndSend("nameSubcejt", deleteString);
+        findAndClick("searchButton");
+
+        // çöp kovaları 5 den az olana kadar bekle: search sonucu gözükene kadar bekle
+        waitnumberOfElementsToBeLessThan(By.xpath("//ms-delete-button//button"), 5);
+
+        findAndClick("deleteButton");
+        findAndClick("deleteDialogBtn");
     }
 
     List<WebElement> myList;
-    public void ChooseListElement(String listName, String option)
-    {
+
+    public void ChooseListElement(String listName, String option) {
         switch (listName) {
             case "userTypeAllOptions":
                 myList = userTypeAllOptions;
                 break;
         }
 
-        userType.click();
+
         listSelectOption(myList, option);
     }
 
-    public void findAndEdit(String oldWord, String newWord)
-    {
+    public void findAndEdit(String oldWord, String newWord) {
         // tıklatma
         scrollToUpElement(rightScroll);
         findAndSend("searchInput", oldWord);
@@ -237,6 +242,7 @@ public class DialogContent extends Parent{
         waitnumberOfElementsToBeLessThan(By.xpath("//ms-delete-button//button"), 5);
 
         findAndClick("editBtn");
+        findAndClick("ADDSubject2");
 
         findAndSend("nameInput", newWord);
         findAndClick("saveButton");
