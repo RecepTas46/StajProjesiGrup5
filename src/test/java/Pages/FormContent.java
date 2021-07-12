@@ -172,7 +172,7 @@ public class FormContent  extends Parent{
 
 
         if ( myElement == employeeTeacher) {
-              ESCClick();
+            ESCClick();
         }
 
     }

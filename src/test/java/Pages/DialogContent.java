@@ -91,32 +91,7 @@ public class DialogContent extends Parent {
     @FindBy(xpath = "//ms-edit-button//button")
     private WebElement editBtn;
 
-    @FindBy(css = "div>mat-option>span")
-    private List<WebElement> countryAllOptions;
-
-    @FindBy(xpath = "//mat-select[contains(@aria-labelledby,'mat-form-field')]")
-    private WebElement countrySelect;
-
-    @FindBy(xpath = "//ms-text-field[@formcontrolname='name']//input")
-    private WebElement cityName;
-
-    @FindBy(xpath = "//div[contains(text(),'deleted')]")
-    private WebElement cannotDeletedMsg;
-
-    @FindBy(xpath = "(//button[contains(@aria-describedby,'cdk-describedby-message')]//span)[5]")
-    private WebElement ADDSubject2;
-
-
-    @FindBy(xpath = "//span[text()='Subject Category']")
-    private WebElement SubjectCatogires;
-
-    @FindBy(xpath = "(//div//mat-option)[5]")
-    private WebElement MathBtn;
-
-    @FindBy(xpath = "(//div//ms-text-field[contains(@id,'ms-text-field')]//input)[1]")
-    private WebElement nameSubcejt;
-
-
+  
     WebElement myElement;
 
     public void findAndSend(String elementName, String value) {
@@ -145,17 +120,6 @@ public class DialogContent extends Parent {
                 myElement = searchInput;
                 break;
 
-            case "priorityCode":
-                myElement = priorityCode;
-                break;
-
-            case "integrationCode":
-                myElement = integrationCode;
-                break;
-
-            case "cityName":
-                myElement = cityName;
-                break;
 
 
         }
@@ -205,24 +169,6 @@ public class DialogContent extends Parent {
                 myElement = editBtn;
                 break;
 
-            case "countrySelect":
-                myElement = countrySelect;
-                break;
-            case "ADDSubject2":
-                myElement = ADDSubject2;
-                break;
-
-            case "SubjectCatogires":
-                myElement = SubjectCatogires;
-                break;
-
-            case "MathBtn":
-                myElement = MathBtn;
-                break;
-            case "nameSubcejt":
-                myElement = nameSubcejt;
-                break;
-
 
         }
 
@@ -242,12 +188,6 @@ public class DialogContent extends Parent {
             case "alreadyExist":
                 myElement = alreadyExist;
                 break;
-
-            case "cannotDeletedMsg":
-                myElement = cannotDeletedMsg;
-                break;
-
-
         }
 
         verifyContainsText(myElement, msg);
@@ -286,15 +226,9 @@ public class DialogContent extends Parent {
             case "userTypeAllOptions":
                 myList = userTypeAllOptions;
                 break;
-
-            case "countryAllOptions":
-                myList = countryAllOptions;
-                break;
-
-
         }
 
-        // userType.click();
+
         listSelectOption(myList, option);
     }
 
@@ -314,13 +248,4 @@ public class DialogContent extends Parent {
         findAndClick("saveButton");
     }
 
-    public void invisibilityOfElement(String elementName) {
-        switch (elementName) {
-            case "successMessage":
-                myElement = successMessage;
-                break;
-
-        }
-        waitUntilInvisibility(myElement);
-    }
 }

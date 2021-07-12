@@ -1,15 +1,15 @@
-#Senaryo ;
-#1- siteyi açınız.
-#2- username ve password u gönderin ve Login butonuna tıklatın.
-#3- Login olduğunuzu doğrulayın.
+#Senaryo;
+  #1- Siteyi aciniz.
+  #2- username ve password u gönderin ve login butonuna tiklatin.
+  #3- Login oldugunuzu dogrulayiniz.
 
-#- Sonra Yukarıdaki Senaryoyu Gherkin dilinde yazdık.
 
-Feature: Login Funonality
+  #- Sonra yukaridaki Senaryoyu  Gherkin dilinde yazdik.
 
-     @SmokeTest
-     Scenario: Login with valid username and password
+@SmokeTest
+  Feature: Login  Functionality
+       Scenario: Login with valid username and password
 
-       Given Navigate to basqar
-       When Enter username and password and click login button
-       Then User should login successfully
+         Given Navigate to basqar
+         When Enter username and password and click login button
+         Then User should login successfully
