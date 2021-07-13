@@ -251,8 +251,14 @@ public class DialogContent extends Parent{
             case "userTypeAllOptions":
                 myList = userTypeAllOptions;
                 break;
-        }
 
+            case "countryAllOptions":
+                myList = countryAllOptions;
+                break;
+
+
+        }
+        countrySelect.click();
         userType.click();
         listSelectOption(myList, option);
     }
