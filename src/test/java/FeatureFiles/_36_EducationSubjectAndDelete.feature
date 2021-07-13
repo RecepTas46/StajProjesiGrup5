@@ -11,7 +11,7 @@ Feature: Education Create and Delete
     Then Success message should be displayed
 
     Scenario: Create Subject delete
-    When User delete subject "subjectTarik"
+    When User delete the "subjectTarik"
     Then Success message should be displayed
 
 

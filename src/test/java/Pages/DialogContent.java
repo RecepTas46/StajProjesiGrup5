@@ -28,7 +28,7 @@ public class DialogContent extends Parent{
     @FindBy(xpath = "(//span[contains(text(),'Dashboard')])[2]")
     public WebElement dashboard;
 
-    @FindBy(xpath = "//ms-add-button[contains(@tooltip,'TITLE.ADD')]//button")
+    @FindBy(xpath = "//ms-table-toolbar//ms-add-button[contains(@class, 'ng-star-inserted')]//button")
     private WebElement addButton;
 
     @FindBy(xpath = "//ms-text-field[@formcontrolname='name']//input")
@@ -55,7 +55,7 @@ public class DialogContent extends Parent{
     @FindBy(xpath = "//button[@aria-label='Close dialog']")
     private WebElement closeDialog;
 
-    @FindBy(xpath = "//ms-text-field[@placeholder='GENERAL.FIELD.NAME']//input")
+    @FindBy(xpath = "(//mat-form-field//ms-text-field[contains(@id,'ms-text-field')]//input)[1]")
     private WebElement searchInput;
 
     @FindBy(xpath = "//ms-search-button//button")
@@ -103,18 +103,13 @@ public class DialogContent extends Parent{
     @FindBy(xpath = "//div[contains(text(),'deleted')]")
     private WebElement cannotDeletedMsg;
 
-    @FindBy(xpath = "(//button[contains(@aria-describedby,'cdk-describedby-message')]//span)[5]")
-    private WebElement ADDSubject2;
-
-
     @FindBy(xpath = "//span[text()='Subject Category']")
     private WebElement SubjectCatogires;
 
     @FindBy(xpath = "(//div//mat-option)[5]")
     private WebElement MathBtn;
 
-    @FindBy(xpath = "(//div//ms-text-field[contains(@id,'ms-text-field')]//input)[1]")
-    private WebElement nameSubcejt;
+
 
     WebElement myElement;
     public void findAndSend(String elementName,String value)
@@ -198,10 +193,7 @@ public class DialogContent extends Parent{
                  case "countrySelect":
                 myElement = countrySelect;
                 break;
-                
-            case "ADDSubject2":
-                myElement = ADDSubject2;
-                break;
+
 
             case "SubjectCatogires":
                 myElement = SubjectCatogires;
@@ -211,9 +203,7 @@ public class DialogContent extends Parent{
                 myElement = MathBtn;
                 break;
                 
-            case "nameSubcejt":
-                myElement = nameSubcejt;
-                break;
+
 
         }
 
