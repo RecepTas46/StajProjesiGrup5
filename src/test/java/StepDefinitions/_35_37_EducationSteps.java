@@ -16,6 +16,7 @@ public class _35_37_EducationSteps {
         ln.findAndClick("setupfive");
         ln.findAndClick("subjectCategoriesBtn");
     }
+
     @When("^Create a education name as \"([^\"]*)\" code as \"([^\"]*)\"$")
     public void createAEducationNameAsCodeAs(String name, String code) {
         dc.findAndClick("addButton");
@@ -31,10 +32,11 @@ public class _35_37_EducationSteps {
     }
 
     @When("^User edit the \"([^\"]*)\" to \"([^\"]*)\"$")
-    public void userEditTheTo(String oldWord, String newWord)  {
+    public void userEditTheTo(String oldWord, String newWord) {
         dc.findAndEdit(oldWord, newWord);
 
     }
+
     @And("^Navigate to education pageSubject$")
     public void navigateToEducationPageSubject() {
         ln.findAndClick("EducationBtn");
@@ -43,9 +45,9 @@ public class _35_37_EducationSteps {
     }
 
     @When("^Create a subject education name as \"([^\"]*)\" code as \"([^\"]*)\"$")
-    public void createASubjectEducationNameAsCodeAs(String name, String code)  {
+    public void createASubjectEducationNameAsCodeAs(String name, String code) {
         ln.findAndClick("subjectBtn");
-        dc.findAndClick("ADDSubject2");
+        dc.findAndClick("addButton");
         dc.findAndSend("nameInput", name);
         dc.findAndSend("codeInput", code);
         dc.findAndClick("SubjectCatogires");
@@ -53,12 +55,7 @@ public class _35_37_EducationSteps {
         dc.findAndClick("saveButton");
     }
 
-    @When("^User delete subject \"([^\"]*)\"$")
-    public void userDeleteSubject(String subjectName)  {
-        ln.findAndClick("subjectBtn");
-        dc.findAndClick("nameSubcejt");
-       dc.findAndDeleteSubject(subjectName);
-    }
+
 
 
 }
