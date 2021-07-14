@@ -251,17 +251,20 @@ public class DialogContent extends Parent {
             case "userTypeAllOptions":
                 myList = userTypeAllOptions;
                 break;
+      case "educationAllOptions":
+                myList = educationAllOptions;
+                break;
+   
             case "countryAllOptions":
                 myList = countryAllOptions;
                 break;
-            case "educationAllOptions":
-                myList = educationAllOptions;
-                break;
+
         }
-
-
+        countrySelect.click();
+        userType.click();
         listSelectOption(myList, option);
     }
+      
 
     public void findAndEdit(String oldWord, String newWord) {
         // tıklatma
