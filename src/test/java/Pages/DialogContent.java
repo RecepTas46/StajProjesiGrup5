@@ -10,26 +10,29 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
-public class DialogContent extends Parent{
+public class DialogContent extends Parent {
 
     public DialogContent() {
         PageFactory.initElements(BaseDriver.getDriver(), this);
     }
 
-    @FindBy(id="mat-input-0")
+    @FindBy(id = "mat-input-0")
     private WebElement username;
 
-    @FindBy(id="mat-input-1")
+    @FindBy(id = "mat-input-1")
     private WebElement password;
 
-    @FindBy(css="button[aria-label='LOGIN']")
+    @FindBy(css = "button[aria-label='LOGIN']")
     private WebElement loginButton;
 
     @FindBy(xpath = "(//span[contains(text(),'Dashboard')])[2]")
     public WebElement dashboard;
 
-    @FindBy(xpath = "//ms-table-toolbar//ms-add-button[contains(@class, 'ng-star-inserted')]//button")
+    @FindBy(xpath = "//ms-add-button[contains(@tooltip,'TITLE.ADD')]//button")
     private WebElement addButton;
+
+    @FindBy(xpath = "//ms-table-toolbar//ms-add-button[contains(@class, 'ng-star-inserted')]//button")
+    private WebElement addSubjectButton;
 
     @FindBy(xpath = "//ms-text-field[@formcontrolname='name']//input")
     private WebElement nameInput;
@@ -90,8 +93,8 @@ public class DialogContent extends Parent{
 
     @FindBy(xpath = "//ms-edit-button//button")
     private WebElement editBtn;
-    
-   @FindBy(css = "div>mat-option>span")
+
+    @FindBy(css = "div>mat-option>span")
     private List<WebElement> countryAllOptions;
 
     @FindBy(xpath = "//mat-select[contains(@aria-labelledby,'mat-form-field')]")
@@ -104,51 +107,49 @@ public class DialogContent extends Parent{
     private WebElement cannotDeletedMsg;
 
     @FindBy(xpath = "//span[text()='Subject Category']")
-    private WebElement SubjectCatogires;
+    private WebElement SubjectCategoriesClik;
 
-    @FindBy(xpath = "(//div//mat-option)[5]")
-    private WebElement MathBtn;
-
+    @FindBy(css = "div>mat-option>span")
+    private List<WebElement> educationAllOptions;
 
 
     WebElement myElement;
-    public void findAndSend(String elementName,String value)
-    {
-          switch (elementName) {
-              case "username":
-                 myElement = username;
-                 break;
 
-              case "password":
-                  myElement = password;
-                  break;
+    public void findAndSend(String elementName, String value) {
+        switch (elementName) {
+            case "username":
+                myElement = username;
+                break;
 
-              case "nameInput":
-                  myElement = nameInput;
-                  break;
+            case "password":
+                myElement = password;
+                break;
 
-              case "codeInput":
-                  myElement = codeInput;
-                  break;
+            case "nameInput":
+                myElement = nameInput;
+                break;
 
-              case "shortName":
-                  myElement = shortName;
-                  break;
+            case "codeInput":
+                myElement = codeInput;
+                break;
 
-              case "searchInput":
-                  myElement = searchInput;
-                  break;
+            case "shortName":
+                myElement = shortName;
+                break;
 
-             case "cityName":
+            case "searchInput":
+                myElement = searchInput;
+                break;
+
+            case "cityName":
                 myElement = cityName;
                 break;
-          }
+        }
 
-          sendKeysFunction(myElement, value);
+        sendKeysFunction(myElement, value);
     }
 
-    public void findAndClick(String elementName)
-    {
+    public void findAndClick(String elementName) {
         switch (elementName) {
             case "loginButton":
                 myElement = loginButton;
@@ -156,6 +157,9 @@ public class DialogContent extends Parent{
 
             case "addButton":
                 myElement = addButton;
+                break;
+            case "addSubjectButton":
+                myElement = addSubjectButton;
                 break;
 
             case "saveButton":
@@ -183,26 +187,21 @@ public class DialogContent extends Parent{
                 break;
 
             case "acceptCookies":
-                myElement= acceptCookies;
+                myElement = acceptCookies;
                 break;
 
             case "editBtn":
-                myElement= editBtn;
+                myElement = editBtn;
                 break;
-                
-                 case "countrySelect":
+
+            case "countrySelect":
                 myElement = countrySelect;
                 break;
 
 
-            case "SubjectCatogires":
-                myElement = SubjectCatogires;
+            case "SubjectCategoriesClik":
+                myElement = SubjectCategoriesClik;
                 break;
-
-            case "MathBtn":
-                myElement = MathBtn;
-                break;
-                
 
 
         }
@@ -210,8 +209,7 @@ public class DialogContent extends Parent{
         clickFunction(myElement);
     }
 
-    public void findAndContainsText(String elementName, String msg)
-    {
+    public void findAndContainsText(String elementName, String msg) {
         switch (elementName) {
             case "successMessage":
                 myElement = successMessage;
@@ -224,14 +222,16 @@ public class DialogContent extends Parent{
             case "alreadyExist":
                 myElement = alreadyExist;
                 break;
+            case "cannotDeletedMsg":
+                myElement = cannotDeletedMsg;
+                break;
         }
 
         verifyContainsText(myElement, msg);
     }
 
 
-    public void findAndDelete(String deleteString)
-    {
+    public void findAndDelete(String deleteString) {
         // tıklatma
         scrollToUpElement(rightScroll);
         findAndSend("searchInput", deleteString);
@@ -245,26 +245,28 @@ public class DialogContent extends Parent{
     }
 
     List<WebElement> myList;
-    public void ChooseListElement(String listName, String option)
-    {
+
+    public void ChooseListElement(String listName, String option) {
         switch (listName) {
             case "userTypeAllOptions":
                 myList = userTypeAllOptions;
                 break;
-
+      case "educationAllOptions":
+                myList = educationAllOptions;
+                break;
+   
             case "countryAllOptions":
                 myList = countryAllOptions;
                 break;
-
 
         }
         countrySelect.click();
         userType.click();
         listSelectOption(myList, option);
     }
+      
 
-    public void findAndEdit(String oldWord, String newWord)
-    {
+    public void findAndEdit(String oldWord, String newWord) {
         // tıklatma
         scrollToUpElement(rightScroll);
         findAndSend("searchInput", oldWord);
@@ -278,8 +280,8 @@ public class DialogContent extends Parent{
         findAndSend("nameInput", newWord);
         findAndClick("saveButton");
     }
-    
-     public void invisibilityOfElement(String elementName) {
+
+    public void invisibilityOfElement(String elementName) {
         switch (elementName) {
             case "successMessage":
                 myElement = successMessage;

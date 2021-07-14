@@ -4,14 +4,14 @@ Feature: Education Create and Delete
     Given Navigate to basqar
     When Enter username and password and click login button
     Then User should login successfully
-    And Navigate to education pageSubject
+    And Navigate to education page
 
   Scenario: Create a Subject Education
-    When Create a subject education name as "subjectTarik" code as "code5"
+    When Create a subject education name as "subjectTarik" code as "code05"
     Then Success message should be displayed
 
     Scenario: Create Subject delete
-    When User delete the "subjectTarik"
+    When User delete subject the "subjectTarik"
     Then Success message should be displayed
 
 
