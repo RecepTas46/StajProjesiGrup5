@@ -14,11 +14,11 @@ public class _35_37_EducationSteps {
     public void navigateToEducationPage() {
         ln.findAndClick("EducationBtn");
         ln.findAndClick("setupfive");
+        ln.findAndClick("subjectCategoriesBtn");
     }
 
     @When("^Create a education name as \"([^\"]*)\" code as \"([^\"]*)\"$")
     public void createAEducationNameAsCodeAs(String name, String code) {
-        ln.findAndClick("subjectCategoriesBtn");
         dc.findAndClick("addButton");
         dc.findAndSend("nameInput", name);
         dc.findAndSend("codeInput", code);
@@ -28,7 +28,6 @@ public class _35_37_EducationSteps {
 
     @When("^User delete the \"([^\"]*)\"$")
     public void userDeleteThe(String newWord) {
-        ln.findAndClick("subjectCategoriesBtn");
         dc.findAndDelete(newWord);
     }
 
@@ -38,34 +37,25 @@ public class _35_37_EducationSteps {
 
     }
 
+    @And("^Navigate to education pageSubject$")
+    public void navigateToEducationPageSubject() {
+        ln.findAndClick("EducationBtn");
+        ln.findAndClick("setupfive");
+        ln.findAndClick("subjectBtn");
+    }
 
     @When("^Create a subject education name as \"([^\"]*)\" code as \"([^\"]*)\"$")
     public void createASubjectEducationNameAsCodeAs(String name, String code) {
         ln.findAndClick("subjectBtn");
-        dc.findAndClick("addSubjectButton");
+        dc.findAndClick("addButton");
         dc.findAndSend("nameInput", name);
         dc.findAndSend("codeInput", code);
-        dc.findAndClick("SubjectCategoriesClik");
-        dc.ChooseListElement("educationAllOptions","Mathematics");
+        dc.findAndClick("SubjectCatogires");
+        dc.findAndClick("MathBtn");
         dc.findAndClick("saveButton");
     }
 
 
-    @When("^Create a subject new Education name as \"([^\"]*)\" code as \"([^\"]*)\"$")
-    public void createASubjectNewEducationNameAsCodeAs(String name, String code) {
-        ln.findAndClick("subjectBtn");
-        dc.findAndClick("addSubjectButton");
-        dc.findAndSend("nameInput", name);
-        dc.findAndSend("codeInput", code);
-        dc.findAndClick("SubjectCategoriesClik");
-        dc.ChooseListElement("educationAllOptions","MySubjectCat");
-        dc.findAndClick("saveButton");
-    }
 
-    @When("^User delete subject the \"([^\"]*)\"$")
-    public void userDeleteSubjectThe(String subjectName)  {
-        ln.findAndClick("subjectBtn");
-        dc.findAndDelete(subjectName);
 
-    }
 }
