@@ -248,20 +248,20 @@ public class DialogContent extends Parent {
 
     public void ChooseListElement(String listName, String option) {
         switch (listName) {
+
             case "userTypeAllOptions":
                 myList = userTypeAllOptions;
                 break;
-      case "educationAllOptions":
-                myList = educationAllOptions;
-                break;
-   
+
             case "countryAllOptions":
                 myList = countryAllOptions;
                 break;
 
+            case "educationAllOptions":
+                myList = educationAllOptions;
+                break;
+
         }
-        countrySelect.click();
-        userType.click();
         listSelectOption(myList, option);
     }
       
