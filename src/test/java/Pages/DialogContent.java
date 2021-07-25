@@ -112,6 +112,29 @@ public class DialogContent extends Parent {
     @FindBy(css = "div>mat-option>span")
     private List<WebElement> educationAllOptions;
 
+    @FindBy(xpath = "//div[@class='mat-form-field-infix ng-tns-c70-50']")
+    private WebElement descriptionClick;
+
+    @FindBy(css = "input[aria-required='true']")
+    private WebElement descriptionSendKeys;
+
+    @FindBy(xpath = "//input[@data-placeholder='Budget Info Entering Start Date']")
+    private WebElement budgetStartDate;
+
+    @FindBy(xpath = "//div[text()=17]")
+    private WebElement budgetStartSecim;
+
+    @FindBy(xpath = "//input[@data-placeholder='Budget Info Entering End Date']")
+    private WebElement budgetEndDate;
+
+    @FindBy(xpath = "//div[text()=18]")
+    private WebElement budgetEndSecim;
+
+    @FindBy(xpath = "//div[@class='mat-form-field-infix ng-tns-c70-53']")
+    private WebElement budgetCommentClick;
+
+    @FindBy(css = "textarea[formcontrolname='comment']")
+    private WebElement budgetCommentInput;
 
     WebElement myElement;
 
@@ -143,6 +166,14 @@ public class DialogContent extends Parent {
 
             case "cityName":
                 myElement = cityName;
+                break;
+
+            case "descriptionSendKeys":
+                myElement = descriptionSendKeys;
+                break;
+
+            case "budgetCommentInput":
+                myElement = budgetCommentInput;
                 break;
         }
 
@@ -202,6 +233,27 @@ public class DialogContent extends Parent {
             case "SubjectCategoriesClik":
                 myElement = SubjectCategoriesClik;
                 break;
+            case "descriptionClick":
+                myElement = descriptionClick;
+                break;
+            case "budgetCommentClick":
+                myElement = budgetCommentClick;
+                break;
+
+            case "budgetStartDate":
+                myElement = budgetStartDate;
+                break;
+
+            case "budgetStartSecim":
+                myElement = budgetStartSecim;
+                break;
+            case "budgetEndDate":
+                myElement = budgetEndDate;
+                break;
+            case "budgetEndSecim":
+                myElement = budgetEndSecim;
+                break;
+
 
 
         }
@@ -280,6 +332,25 @@ public class DialogContent extends Parent {
         findAndSend("nameInput", newWord);
         findAndClick("saveButton");
     }
+
+    // ---
+    public void findAndEditbudget(String oldWord, String newWord) {
+        // tıklatma
+        scrollToUpElement(rightScroll);
+        findAndSend("searchInput", oldWord);
+        findAndClick("searchButton");
+
+        // çöp kovaları 5 den az olana kadar bekle: search sonucu gözükene kadar bekle
+        waitnumberOfElementsToBeLessThan(By.xpath("//ms-delete-button//button"), 5);
+
+        findAndClick("editBtn");
+        descriptionSendKeys.clear();
+        findAndSend("descriptionSendKeys", newWord);
+        findAndClick("saveButton");
+    }
+
+
+    // --
 
     public void invisibilityOfElement(String elementName) {
         switch (elementName) {
