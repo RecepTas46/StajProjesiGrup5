@@ -13,7 +13,7 @@ Feature: Create edit and delete a BudgetGroups Scenario
     Then Success message should be displayed
     When User edit budget the "Gider12" to "Gider22"
     Then Success message should be displayed
-    When Delete Budget "Gider22"
+    When Delete BudgetGroups "Gider22"
     Then Success message should be displayed
 
 

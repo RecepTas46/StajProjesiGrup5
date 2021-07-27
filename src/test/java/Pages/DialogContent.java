@@ -136,6 +136,19 @@ public class DialogContent extends Parent {
     @FindBy(css = "textarea[formcontrolname='comment']")
     private WebElement budgetCommentInput;
 
+    @FindBy(xpath = "//input[@placeholder='Expense account code prefixes']")
+    private WebElement expenseAccount;
+
+    @FindBy(xpath = "//span[text()='Type']")
+    private WebElement budgetTypeClick;
+
+    @FindBy(css = "div>mat-option>span")
+    private List<WebElement> budgetCostAllOptions;
+
+    @FindBy(xpath = "(//ms-edit-button//button)")
+    private WebElement budgetCostEditBtn;
+
+
     WebElement myElement;
 
     public void findAndSend(String elementName, String value) {
@@ -174,6 +187,9 @@ public class DialogContent extends Parent {
 
             case "budgetCommentInput":
                 myElement = budgetCommentInput;
+                break;
+            case "expenseAccount":
+                myElement = expenseAccount;
                 break;
         }
 
@@ -253,7 +269,12 @@ public class DialogContent extends Parent {
             case "budgetEndSecim":
                 myElement = budgetEndSecim;
                 break;
-
+            case "budgetTypeClick":
+                myElement = budgetTypeClick;
+                break;
+            case "budgetCostEditBtn":
+                myElement = budgetCostEditBtn;
+                break;
 
 
         }
@@ -312,11 +333,15 @@ public class DialogContent extends Parent {
             case "educationAllOptions":
                 myList = educationAllOptions;
                 break;
+            case "budgetCostAllOptions":
+                myList = budgetCostAllOptions;
+                break;
+
 
         }
         listSelectOption(myList, option);
     }
-      
+
 
     public void findAndEdit(String oldWord, String newWord) {
         // tıklatma
@@ -328,7 +353,6 @@ public class DialogContent extends Parent {
         waitnumberOfElementsToBeLessThan(By.xpath("//ms-delete-button//button"), 5);
 
         findAndClick("editBtn");
-
         findAndSend("nameInput", newWord);
         findAndClick("saveButton");
     }
@@ -351,7 +375,6 @@ public class DialogContent extends Parent {
 
 
     // --
-
     public void invisibilityOfElement(String elementName) {
         switch (elementName) {
             case "successMessage":
