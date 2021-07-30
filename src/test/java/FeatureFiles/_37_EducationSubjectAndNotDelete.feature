@@ -14,10 +14,17 @@ Feature: Education Create and Delete
     When Create a subject new Education name as "syuleyman" code as "code005"
     Then Success message should be displayed
 
-
   Scenario: Delete a Education
     When User delete the "MySubjectCat"
     Then Can not be deleted message should be displayed
+
+  Scenario: Create Subject delete
+    When User delete subject the "syuleyman"
+    Then Success message should be displayed
+
+  Scenario: Delete a Education
+    When User delete the "MySubjectCat"
+    Then Success message should be displayed
 
 
 
