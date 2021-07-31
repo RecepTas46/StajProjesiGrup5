@@ -6,7 +6,7 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.When;
 
-public class _3_11_3_12_BudgetSteps {
+public class _311_312_BudgetSteps {
     LeftNav ln = new LeftNav();
     DialogContent dc = new DialogContent();
 

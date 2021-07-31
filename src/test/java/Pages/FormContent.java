@@ -8,6 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.util.List;
 
 public class FormContent  extends Parent{
 
@@ -87,6 +88,49 @@ public class FormContent  extends Parent{
     @FindBy(css = "mat-select[formcontrolname='status']")
     private WebElement passiveButton;
 
+    //***********************************
+    @FindBy(xpath = "//input[@formcontrolname='description']")
+    private WebElement description;
+
+    @FindBy(xpath = "//input[@formcontrolname='variable']")
+    private WebElement variable;
+
+    @FindBy(xpath = "//mat-select[@formcontrolname='modifierType']")  ////mat-select[@formcontrolname='modifierType']//div[contains(@id,'mat-select')]
+    private WebElement modifierType;
+
+    @FindBy(xpath = "//mat-option//span")
+    private List<WebElement> listOptions;
+
+    @FindBy(xpath = "//mat-select[@formcontrolname='valueType']//div[contains(@id,'mat-select')]")
+    private WebElement valueType;
+
+    @FindBy(xpath = "//input[@name='priority']")
+    private WebElement priority;
+
+    @FindBy(xpath = "//input[@data-placeholder='Amount']")
+    private WebElement amount;
+
+    @FindBy(xpath = "//ms-text-field[@formcontrolname='name']//input")
+    private WebElement Name;
+
+    @FindBy(xpath = "//ms-integer-field//input")
+    private WebElement periodCount;
+
+    @FindBy(xpath = "//ms-integer-field[@formcontrolname='rowSize']//input")
+    private WebElement rowSize;
+
+    @FindBy(xpath = "//ms-integer-field[@formcontrolname='columnSize']//input")
+    private WebElement columnSize;
+
+    @FindBy(xpath = "(//mat-toolbar-row//button[contains(@class,'mat-focus-indicator')])[2]")
+    private WebElement closeDialog;
+
+    @FindBy(xpath = "//div//input[@placeholder='User Type']")
+    private WebElement userType;
+
+    @FindBy(xpath = "//mat-icon[text()='cancel']")
+    private WebElement cancelUserType;
+
 
 
     WebElement myElement;
@@ -165,6 +209,13 @@ public class FormContent  extends Parent{
                 myElement = passiveButton;
                 break;
 
+            case "modifierType":myElement = modifierType;break;
+            case "valueType":myElement = valueType;break;
+            case "closeDialog":myElement = closeDialog;break;
+            case "userType":myElement = userType;break;
+            case "cancelUserType":myElement = cancelUserType;break;
+
+
 
         }
 
@@ -199,10 +250,37 @@ public class FormContent  extends Parent{
             case "documentNumber":
                 myElement = documentNumber;
                 break;
+
+            case "description":myElement = description;break;
+            case "variable":myElement = variable;break;
+            case "priority":myElement = priority;break;
+            case "amount":myElement = amount;break;
+            case "Name":myElement = Name;break;
+            case "periodCount":myElement = periodCount;break;
+            case "rowSize":myElement = rowSize;break;
+            case "columnSize":myElement = columnSize;break;
+
+
         }
 
         sendKeysFunction(myElement, value);
     }
+    List<WebElement> myList;
+    public void ChooseListElement(String listName, String option)
+    {
+        switch (listName) {
+            case "listOptions":myList = listOptions; break;
+
+        }
+        listSelectOption(myList, option);
+    }
+
+    public void findAndEdit(String newWord)
+    {
+        findAndSend("description", newWord);
+        findAndClick("saveButton");
+    }
+
 
     public void findAndDelete(String deleteString)
     {

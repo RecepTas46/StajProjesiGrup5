@@ -5,7 +5,7 @@ Feature: SOMECOUNTRY Scenario
     When Enter username and password and click login button
     Then User should login successfully
     And Navigate to country page
-  @Regression
+  @SetupParameters
   Scenario: Create SOMECOUNTRY and a city
     When Create a country name as "SOMECOUNTRY" code as "SC21"
     Then Success message should be displayed

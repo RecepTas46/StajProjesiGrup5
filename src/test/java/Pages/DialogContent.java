@@ -31,6 +31,9 @@ public class DialogContent extends Parent {
     @FindBy(xpath = "//ms-add-button[contains(@tooltip,'TITLE.ADD')]//button")
     private WebElement addButton;
 
+    @FindBy(xpath = "//ms-add-button//button[contains(@class,'mat-button')]")
+    private WebElement addButton1;
+
     @FindBy(xpath = "//ms-table-toolbar//ms-add-button[contains(@class, 'ng-star-inserted')]//button")
     private WebElement addSubjectButton;
 
@@ -94,7 +97,7 @@ public class DialogContent extends Parent {
     @FindBy(xpath = "//ms-edit-button//button")
     private WebElement editBtn;
 
-    @FindBy(css = "div>mat-option>span")
+    @FindBy(css = "div>mat-option")
     private List<WebElement> countryAllOptions;
 
     @FindBy(xpath = "//mat-select[contains(@aria-labelledby,'mat-form-field')]")
@@ -148,8 +151,45 @@ public class DialogContent extends Parent {
     @FindBy(xpath = "(//ms-edit-button//button)")
     private WebElement budgetCostEditBtn;
 
+    //******************************
+    @FindBy(xpath = "(//mat-select[contains(@aria-labelledby,'mat-form-field')])[2]")
+    private WebElement countrySelectDialog;
+
+    @FindBy(xpath = "//ms-text-field[@formcontrolname='title']//input")
+    private WebElement editName;
+
+    @FindBy(xpath = "//input[@name='name']")
+    private WebElement salConstName;
+
+    @FindBy(xpath = "//input[@data-placeholder='Valid From']")
+    private WebElement validFrom;
+
+    @FindBy(xpath = "(//ms-custom-header//div//button)[5]")
+    private WebElement nextYear;
+
+    @FindBy(xpath = "(//tbody//td[@role='gridcell'])[1]")
+    private WebElement firstJuly;
+
+    @FindBy(xpath = "//ms-text-field[@name='key']//input")
+    private WebElement keyInput;
+
+    @FindBy(xpath = "//input[@inputmode='numeric']")
+    private WebElement vaLue;
+
+    @FindBy(xpath = "//input[@data-placeholder='Name']")
+    private WebElement salConsName;
+
+    @FindBy(xpath = "//button[contains(@class,'mat-accent')]")
+    private WebElement salsearchBtn;
+
+    @FindBy(xpath = "//ms-delete-button//button")
+    private List<WebElement> delButtons;
+
+    @FindBy(xpath = "/ms-edit-button//button[contains(@class,'mat-focus-indicator')]")
+    private List<WebElement> editButtons;
 
     WebElement myElement;
+    List<WebElement> myElements;
 
     public void findAndSend(String elementName, String value) {
         switch (elementName) {
@@ -191,6 +231,13 @@ public class DialogContent extends Parent {
             case "expenseAccount":
                 myElement = expenseAccount;
                 break;
+            case "editName":myElement = editName; break;
+            case "salConstName":myElement = salConstName; break;
+            case "keyInput":myElement = keyInput; break;
+            case "vaLue":myElement = vaLue; break;
+            case "salConsName":myElement = salConsName; break;
+
+
         }
 
         sendKeysFunction(myElement, value);
@@ -275,6 +322,12 @@ public class DialogContent extends Parent {
             case "budgetCostEditBtn":
                 myElement = budgetCostEditBtn;
                 break;
+            case "addButton1":myElement= addButton1; break;
+            case "countrySelectDialog":myElement= countrySelectDialog; break;
+            case "validFrom":myElement= validFrom; break;
+            case "nextYear":myElement= nextYear; break;
+            case "firstJuly":myElement= firstJuly; break;
+            case "salsearchBtn":myElement= salsearchBtn; break;
 
 
         }
@@ -385,6 +438,16 @@ public class DialogContent extends Parent {
         waitUntilInvisibility(myElement);
     }
 
+    public void listElementsSituation(String listName,By selector)
+    {
+        switch (listName) {
+            case "delButtons":myElements = delButtons; break;
+            case "editButtons":myElements = editButtons; break;
+        }
+        if (myElements.size()>1)
+            waitnumberOfElementsToBeLessThan(selector,2);
+
+    }
 }
 
 
