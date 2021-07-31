@@ -1,6 +1,7 @@
 package StepDefinitions;
 
 import Utilities.BaseDriver;
+import Utilities.ExcelUtility;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -30,13 +31,9 @@ public class Hooks {
         System.out.println("Senaryo Bitti");
         System.out.println("scenario sonucu="+ scenario.getStatus());
         System.out.println("scenario isFailed ?="+ scenario.isFailed());
-
-        //if (scenario.getStatus().contains("Failed"))
-        if (scenario.isFailed()) { // Scenario hatalı ise
-            // testNG deki ekran kaydetme bölümü gelecek
-
-            LocalDateTime date = LocalDateTime.now();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yy");
+        LocalDateTime date=LocalDateTime.now();
+        DateTimeFormatter formatter=DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        if (scenario.isFailed()) {
 
             TakesScreenshot screenshot = (TakesScreenshot) BaseDriver.getDriver();
             File ekranDosyasi = screenshot.getScreenshotAs(OutputType.FILE);
@@ -49,6 +46,8 @@ public class Hooks {
                 e.printStackTrace();
             }
         }
+        ExcelUtility.writeExcel("src/test/java/ApachePOI/resources/ScenarioStatus.xlsx",
+                scenario,BaseDriver.threadBrowserName.get(), date.format(formatter));
 
         BaseDriver.DriverQuit();
     }

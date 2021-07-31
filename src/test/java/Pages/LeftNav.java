@@ -84,6 +84,35 @@ public class LeftNav extends Parent{
     @FindBy(xpath = "//a[@href='/cost-center']")
     private WebElement budgetCost;
 
+    //***********************************
+    @FindBy(xpath = "(//span[text()='Setup'])[3]")
+    private WebElement humanRecSetUp ;
+
+    @FindBy(xpath = "//span[text()='Position Salary']")
+    private WebElement positionSalary ;
+
+    @FindBy(xpath = "//span[text()='Positions']")
+    private WebElement positions ;
+
+    @FindBy(xpath = "//span[text()='Salary Modifiers']")
+    private WebElement salaryModifiers ;
+
+    @FindBy(xpath = "//span[text()='Salary Constants']")
+    private WebElement salaryConstants ;
+
+    @FindBy(xpath = "(//span[text()='Reports'])[4]")
+    private WebElement reports ;
+
+    @FindBy(xpath = "(//span[text()='Setup'])[7]")
+    private WebElement reportsSetup ;
+
+    @FindBy(xpath = "//span[text()='Excel Template']")
+    private WebElement excelTemplate ;
+
+    @FindBy(xpath = "//span[text()='Salary Types']")
+    private WebElement salaryTypes ;
+
+
     WebElement myElement;
     public void findAndClick(String elementName)
     {
@@ -172,6 +201,17 @@ public class LeftNav extends Parent{
             case "budgetCost":
                 myElement = budgetCost;
                 break;
+
+            case "humanRecSetUp":myElement = humanRecSetUp;break;
+            case "positionSalary":myElement = positionSalary;break;
+            case "positions":myElement = positions;break;
+            case "salaryModifiers":myElement = salaryModifiers;break;
+            case "salaryConstants":myElement = salaryConstants;break;
+            case "reports":myElement = reports;break;
+            case "reportsSetup":myElement = reportsSetup;break;
+            case "excelTemplate":myElement = excelTemplate;break;
+            case "salaryTypes":myElement = salaryTypes;break;
+
 
 
         }

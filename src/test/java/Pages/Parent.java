@@ -110,5 +110,10 @@ public class Parent {
         Actions aksiyonlar=new Actions(BaseDriver.getDriver());
         Action aksiyon=aksiyonlar.moveToElement(surgu).dragAndDropBy(surgu,number1,number2).build();aksiyon.perform();
     }
+    public void waitUrlContains(String text)
+    {
+        WebDriverWait wait=new WebDriverWait(BaseDriver.getDriver(),20);
+        wait.until(ExpectedConditions.urlContains(text));
+    }
 
 }

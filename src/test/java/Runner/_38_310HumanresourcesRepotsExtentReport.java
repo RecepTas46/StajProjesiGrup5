@@ -6,7 +6,7 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
 import org.testng.annotations.AfterClass;
 
 @CucumberOptions(
-        tags = {"@SetupParameters"},
+        tags = {"@HumanResourcesSetup"},
         features = {"src/test/java/FeatureFiles"},
         glue = {"StepDefinitions"},
 
@@ -14,7 +14,7 @@ import org.testng.annotations.AfterClass;
                 "com.cucumber.listener.ExtentCucumberFormatter:target/ExtentReport/ExtentReportRegression.html"
         }
 )
-public class _31_34CountryCityExtentReport extends AbstractTestNGCucumberTests {
+public class _38_310HumanresourcesRepotsExtentReport extends AbstractTestNGCucumberTests {
 
        @AfterClass
        public static void afterClass() {
