@@ -2,6 +2,7 @@ package StepDefinitions;
 
 import Pages.DialogContent;
 import Pages.LeftNav;
+import Pages.Parent;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -10,6 +11,7 @@ import org.openqa.selenium.By;
 public class _31_34CountryCitySteps {
     LeftNav ln=new LeftNav();
     DialogContent dc=new DialogContent();
+    Parent pr=new Parent();
 
     @And("^Navigate to country page$")
     public void navigateToCountryPage() {
@@ -20,6 +22,7 @@ public class _31_34CountryCitySteps {
 
     @When("^Create a country name as \"([^\"]*)\" code as \"([^\"]*)\"$")
     public void createACountryNameAsCodeAs(String name, String code) {
+        pr.waitUrlContains("countries/list");
         dc.findAndClick("addButton");
         dc.findAndSend("nameInput",name);
         dc.findAndSend("codeInput",code);
@@ -35,9 +38,10 @@ public class _31_34CountryCitySteps {
     @When("^Create a city name as \"([^\"]*)\" for \"([^\"]*)\"$")
     public void createACityNameAsFor(String cityname, String countryname)  {
         ln.findAndClick("cities");
-        dc.findAndClick("countrySelect");
-        dc.ChooseListElement("countryAllOptions",countryname);
+        pr.waitUrlContains("cities/list");
         dc.findAndClick("addButton");
+        dc.findAndClick("countrySelectDialog");
+        dc.ChooseListElement("countryAllOptions",countryname);
         dc.findAndSend("cityName",cityname);
         dc.findAndClick("saveButton");
     }
@@ -61,6 +65,7 @@ public class _31_34CountryCitySteps {
     @When("^Delete the city \"([^\"]*)\" for \"([^\"]*)\"$")
     public void deleteTheTheCityFor(String cityname, String countryname) {
         ln.findAndClick("cities");
+        pr.waitUrlContains("cities/list");
         dc.findAndClick("countrySelect");
         dc.ChooseListElement("countryAllOptions",countryname);
         dc.waitnumberOfElementsToBeLessThan(By.xpath("//ms-delete-button//button"), 4);
