@@ -73,7 +73,7 @@ public class _311_312_BudgetSteps {
     @When("^select type and click btnSave$")
     public void selectTypeAndClickBtnSave() {
         dc.findAndClick("budgetTypeClick");
-        dc.ChooseListElement("budgetCostAllOptions", "Personal");
+        dc.ChooseListElement("budgetCostAllOptions", "Production");
         dc.findAndClick("saveButton");
 
 

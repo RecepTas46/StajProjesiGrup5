@@ -6,7 +6,7 @@ Feature: Create edit and delete a Cost Centers Scenario
     Then User should login successfully
     And Navigate to Budget page
 
-
+  @BudgetExtentReport
   Scenario: Create edit and delete a Cost Centers
     When Create a Cost Centers name as "nameee" as "codee" as "expensee,"
     When select type and click btnSave

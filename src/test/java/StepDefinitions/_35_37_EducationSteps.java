@@ -2,6 +2,7 @@ package StepDefinitions;
 
 import Pages.DialogContent;
 import Pages.LeftNav;
+import Pages.Parent;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.When;
@@ -9,6 +10,7 @@ import cucumber.api.java.en.When;
 public class _35_37_EducationSteps {
     LeftNav ln = new LeftNav();
     DialogContent dc = new DialogContent();
+    Parent pr = new Parent();
 
     @And("^Navigate to education page$")
     public void navigateToEducationPage() {
@@ -29,6 +31,7 @@ public class _35_37_EducationSteps {
 
     @When("^User delete the \"([^\"]*)\"$")
     public void userDeleteThe(String newWord) {
+        ln.SliderAction("surgu",0,-100);
         ln.findAndClick("subjectCategoriesBtn");
         dc.findAndDelete(newWord);
     }
@@ -49,6 +52,7 @@ public class _35_37_EducationSteps {
     @When("^Create a subject new Education name as \"([^\"]*)\" code as \"([^\"]*)\"$")
     public void createASubjectNewEducationNameAsCodeAs(String name, String code) {
         ln.findAndClick("subjectBtn");
+        pr.waitUrlContains("subjects/list");
         dc.findAndClick("addSubjectButton");
         dc.findAndSend("nameInput", name);
         dc.findAndSend("codeInput", code);
@@ -59,6 +63,7 @@ public class _35_37_EducationSteps {
 
     @When("^User delete subject the \"([^\"]*)\"$")
     public void userDeleteSubjectThe(String subjectName)  {
+        ln.SliderAction("surgu",0,-100);
         ln.findAndClick("subjectBtn");
         dc.findAndDelete(subjectName);
 
