@@ -1,4 +1,4 @@
-Feature: Education Create and Delete
+Feature: Education Create and Delete Subject
 
   Background:
     Given Navigate to basqar
@@ -6,11 +6,11 @@ Feature: Education Create and Delete
     Then User should login successfully
     And Navigate to education page
 
+  @EducationExtentReport
   Scenario: Create a Subject Education
     When Create a subject education name as "subjectTarik" code as "code05"
     Then Success message should be displayed
 
-    Scenario: Create Subject delete
     When User delete subject the "subjectTarik"
     Then Success message should be displayed
 

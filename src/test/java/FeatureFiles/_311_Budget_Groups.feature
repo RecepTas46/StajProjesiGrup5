@@ -6,7 +6,7 @@ Feature: Create edit and delete a BudgetGroups Scenario
     Then User should login successfully
     And Navigate to Budget page
 
-
+  @BudgetExtentReport
   Scenario: Create edit and delete a BudgetGroups
     When Create a Budget definition as "Gider12"  comment as "Yorum"
     When Click  start_End_Date and enter Comment
